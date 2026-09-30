@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Stats from '../components/Stats.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import projekti from '../data/projekti.json';
+const filters = [
+  { v: 'svi', label: 'Svi' },
+  { v: 'investitor', label: 'Kao investitor' },
+  { v: 'izvodjac', label: 'Kao izvođač' },
+];
+const izvCount = projekti.filter((p) => p.uloga === 'izvodjac').length;
+---
+<Base title="Završeni projekti" description="Završeni projekti Stanogradnje: stambeni objekti u Vogošći i na Stupu, te radovi na infrastrukturi, školama i rekonstrukcijama.">
+  <section class="container-x pt-10 pb-12 lg:pt-14 lg:pb-16">
+    <SectionHead h="h1" eyebrow="Završeni projekti" title="Gotovo dvije decenije izgrađenih projekata." lead="Kao investitor izgradili smo preko 60 stanova i 6 poslovnih prostora u Vogošći i na Stupu. Kao izvođač učestvovali smo u infrastrukturi, obrazovnim i stambenim objektima." />
+  </section>
+
+  <Stats items={[
+    { value: '60+', label: 'stanova kao investitor' },
+    { value: '6', label: 'poslovnih prostora' },
+    { value: String(izvCount), label: 'projekata kao izvođač' },
+  ]} />
+
+  <section class="container-x mt-14 flex flex-col gap-8" data-projects>
+    <div class="flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Filter projekata">
+        {filters.map((f, i) => (
+          <button type="button" data-filter={f.v} aria-pressed={i === 0 ? 'true' : 'false'} class="h-11 rounded-full border-[1.5px] border-line-strong px-5 text-sm font-bold text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white">{f.label}</button>
+        ))}
+      </div>
+      <span class="text-sm font-semibold text-muted"><span data-count>{projekti.length}</span> projekata</span>
+    </div>
+    <div class="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      {projekti.map((p) => <ProjectCard p={p} />)}
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-projects]');
+  if (root) {
+    const buttons = root.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const cards = root.querySelectorAll<HTMLElement>('[data-uloga]');
+    const count = root.querySelector('[data-count]')!;
+    buttons.forEach((b) => b.addEventListener('click', () => {
+      const v = b.dataset.filter;
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      let n = 0;
+      cards.forEach((c) => { const show = v === 'svi' || c.dataset.uloga === v; c.classList.toggle('hidden', !show); if (show) n++; });
+      count.textContent = String(n);
+    }));
+  }
+</script>

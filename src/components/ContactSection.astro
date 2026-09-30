@@ -1,0 +1,78 @@
+---
+import { site } from '../data/site';
+import { dostupni, id, m2 } from '../lib/stanovi';
+interface Props { class?: string; showIntro?: boolean }
+const { class: cls = '', showIntro = true } = Astro.props;
+const flatOptions = dostupni.map((s) => ({ value: id(s), label: `Lamela ${s.lamela}, stan ${s.stan} (${m2(s.povrsina)} m²)` }));
+---
+<section id="kontakt" class:list={['container-x', cls]}>
+  <div class="flex flex-col gap-10 rounded-[28px] bg-brand-dark p-6 text-white md:p-12 lg:flex-row lg:gap-16 lg:p-16">
+    <div class="flex flex-1 flex-col justify-between gap-10">
+      {showIntro && (
+        <div class="flex flex-col gap-4">
+          <span class="text-sm font-bold tracking-[0.06em] text-[#cfe9f7] uppercase">Kontakt</span>
+          <h2 class="text-4xl leading-[1.04] font-extrabold tracking-[-0.03em] md:text-[56px]">Zakažite obilazak ili pitajte za stan.</h2>
+          <p class="max-w-[460px] text-[17px] leading-[1.65] text-[#e3f2fa]">Javite nam se telefonom, e-mailom ili putem forme. Odgovaramo u najkraćem roku.</p>
+        </div>
+      )}
+      <div class="grid gap-7 text-base leading-relaxed sm:grid-cols-2">
+        <div class="flex flex-col"><span class="mb-1 text-[13px] text-[#cfe9f7]">Telefon</span>{site.phones.map((p) => <a href={p.href} class="font-bold text-white no-underline hover:underline">{p.label}</a>)}</div>
+        <div class="flex flex-col"><span class="mb-1 text-[13px] text-[#cfe9f7]">E-mail</span><a href={`mailto:${site.email}`} class="font-bold text-white no-underline hover:underline">{site.email}</a></div>
+        <div class="flex flex-col"><span class="mb-1 text-[13px] text-[#cfe9f7]">Adresa</span><span class="font-bold">{site.address.street}<br />{site.address.city}, Sarajevo</span></div>
+        <div class="flex flex-col"><span class="mb-1 text-[13px] text-[#cfe9f7]">Radno vrijeme</span><span class="font-bold">{site.hours}</span></div>
+      </div>
+    </div>
+    <form id="forma" data-contact data-endpoint={site.formEndpoint} data-email={site.email} class="flex w-full flex-col gap-4 rounded-[20px] bg-white p-6 text-ink md:p-9 lg:w-[520px] lg:shrink-0" method="post" action={site.formEndpoint || undefined}>
+      <div class="grid gap-3 sm:grid-cols-2">
+        <label class="flex flex-col gap-1.5 text-[13px] font-semibold">Ime i prezime<input class="field" type="text" name="ime" autocomplete="name" required /></label>
+        <label class="flex flex-col gap-1.5 text-[13px] font-semibold">Telefon<input class="field" type="tel" name="telefon" autocomplete="tel" /></label>
+      </div>
+      <label class="flex flex-col gap-1.5 text-[13px] font-semibold">E-mail<input class="field" type="email" name="email" autocomplete="email" required /></label>
+      <label class="flex flex-col gap-1.5 text-[13px] font-semibold">Zanima me
+        <select class="field" name="tema">
+          <option value="opcenito">Općenit upit</option>
+          <optgroup label="Dostupni stanovi, Bella Vita">
+            {flatOptions.map((o) => <option value={o.value}>{o.label}</option>)}
+          </optgroup>
+          <option value="poslovni-prostor">Poslovni prostor</option>
+        </select>
+      </label>
+      <label class="flex flex-col gap-1.5 text-[13px] font-semibold">Poruka<textarea class="field h-auto py-3" name="poruka" rows="4"></textarea></label>
+      <button type="submit" class="btn-primary">Pošalji upit</button>
+      <p data-status class="hidden text-sm font-semibold" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form[data-contact]').forEach((form) => {
+    const stan = new URLSearchParams(location.search).get('stan');
+    const select = form.querySelector<HTMLSelectElement>('select[name="tema"]');
+    if (stan && select?.querySelector(`option[value="${CSS.escape(stan)}"]`)) select.value = stan;
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const endpoint = form.dataset.endpoint;
+      const tema = select?.selectedOptions[0]?.textContent ?? '';
+      if (!endpoint) {
+        const body = `Ime: ${data.get('ime')}\nTelefon: ${data.get('telefon')}\nE-mail: ${data.get('email')}\nZanima me: ${tema}\n\n${data.get('poruka')}`;
+        location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent('Upit: ' + tema)}&body=${encodeURIComponent(body)}`;
+        return;
+      }
+      data.set('tema', tema);
+      status.classList.remove('hidden');
+      status.textContent = 'Šaljem...';
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error();
+        form.reset();
+        status.className = 'text-sm font-semibold text-success';
+        status.textContent = 'Hvala! Vaš upit je poslan, javit ćemo vam se uskoro.';
+      } catch {
+        status.className = 'text-sm font-semibold text-[#a8341f]';
+        status.textContent = 'Slanje nije uspjelo. Pozovite nas ili pišite na e-mail.';
+      }
+    });
+  });
+</script>

@@ -1,0 +1,24 @@
+---
+import { specs } from '../data/site';
+---
+<section class="container-x mt-24 flex flex-col gap-10 lg:mt-32 lg:flex-row lg:gap-16">
+  <div class="flex flex-col gap-4 lg:w-[380px] lg:shrink-0">
+    <span class="eyebrow">Tehničke karakteristike</span>
+    <h3 class="text-[32px] leading-[1.08] font-extrabold tracking-[-0.025em] md:text-[40px]">Kvalitet koji se ne vidi, ali se osjeti.</h3>
+    <p class="text-base leading-[1.65] text-muted">Termo i zvučna izolacija od 10 cm, kao i vanjska stolarija, garantuju izvrsnu energetsku efikasnost objekta.</p>
+  </div>
+  <ul class="grid flex-1 grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+    {specs.map((s) => (
+      <li class="flex flex-col gap-2 rounded-2xl bg-soft p-5 md:p-7">
+        {s.value ? (
+          <span class="text-4xl leading-none font-extrabold tracking-[-0.03em] md:text-5xl">{s.value}<span class="text-lg text-brand md:text-xl"> {s.unit}</span></span>
+        ) : s.icon === 'heat' ? (
+          <svg width="48" height="48" viewBox="0 0 56 56" fill="none" stroke="#018FD5" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 50h44M6 40c6-6 10 6 16 0s10 6 16 0 8 4 12 0M6 28c6-6 10 6 16 0s10 6 16 0 8 4 12 0M6 16c6-6 10 6 16 0s10 6 16 0 8 4 12 0" /></svg>
+        ) : (
+          <svg width="48" height="48" viewBox="0 0 56 56" fill="none" stroke="#018FD5" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M8 26h40v6a20 20 0 0 1-40 0zM16 26V10a6 6 0 0 1 12 0M28 52v-4" /></svg>
+        )}
+        <span class="font-semibold">{s.label}</span>
+      </li>
+    ))}
+  </ul>
+</section>

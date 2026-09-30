@@ -1,0 +1,71 @@
+---
+import { stanovi, m2 } from '../lib/stanovi';
+const lamele = (['A', 'B'] as const).map((l) => {
+  const rows = stanovi.filter((s) => s.lamela === l);
+  const half = Math.ceil(rows.length / 2);
+  return { l, cols: [rows.slice(0, half), rows.slice(half)] };
+});
+---
+<section id="cjenovnik" class="container-x mt-24 flex flex-col gap-10 lg:mt-32" data-table>
+  <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+    <div class="flex flex-col gap-4">
+      <span class="eyebrow">Pregled svih stanova</span>
+      <h2 class="h2">Svi stanovi po lamelama.</h2>
+    </div>
+    <p class="lead lg:w-[420px]">Kompletan pregled 80 stambenih jedinica sa površinom i statusom prodaje.</p>
+  </div>
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div role="tablist" aria-label="Lamela" class="flex w-fit gap-1.5 rounded-xl bg-soft p-1.5">
+      {lamele.map(({ l }, i) => (
+        <button role="tab" type="button" id={`tab-${l}`} aria-controls={`panel-${l}`} aria-selected={i === 0 ? 'true' : 'false'} data-tab={l} class="h-11 rounded-lg px-5 text-[15px] font-bold text-muted aria-selected:bg-white aria-selected:text-brand-dark">Lamela {l}</button>
+      ))}
+    </div>
+    <label class="flex cursor-pointer items-center gap-2.5 text-[15px] font-semibold">
+      <input type="checkbox" data-only class="h-5 w-5 accent-brand-dark" />Prikaži samo dostupne
+    </label>
+  </div>
+  {lamele.map(({ l, cols }, i) => (
+    <div role="tabpanel" id={`panel-${l}`} aria-labelledby={`tab-${l}`} data-panel={l} class:list={['grid items-start gap-6 lg:grid-cols-2', i !== 0 && 'hidden']}>
+      {cols.map((rows) => (
+        <div class="overflow-hidden rounded-2xl border border-line">
+          <table class="w-full text-left text-[15px]">
+            <caption class="sr-only">Lamela {l}</caption>
+            <thead class="bg-soft text-[13px] font-bold text-muted">
+              <tr><th scope="col" class="px-4 py-3.5 md:px-6">Stan</th><th scope="col" class="px-2 py-3.5">Sprat</th><th scope="col" class="px-2 py-3.5">Tip</th><th scope="col" class="px-2 py-3.5">Površina</th><th scope="col" class="px-4 py-3.5 md:px-6">Status</th></tr>
+            </thead>
+            <tbody>
+              {rows.map((s) => (
+                <tr data-sold={s.status === 'prodato' ? '' : undefined} class:list={['h-11 border-t border-[#eef2f5]', s.status === 'prodato' ? 'text-muted' : 'text-ink']}>
+                  <td class="px-4 font-bold md:px-6">{s.stan}</td>
+                  <td class="px-2">{s.sprat}.</td>
+                  <td class="px-2">{s.tip}</td>
+                  <td class="px-2 whitespace-nowrap">{m2(s.povrsina)} m²</td>
+                  <td class="px-4 md:px-6">
+                    {s.status === 'dostupan'
+                      ? <span class="rounded-full bg-success-bg px-2.5 py-1 text-xs font-bold text-success">Dostupan</span>
+                      : <span class="rounded-full bg-[#eef2f5] px-2.5 py-1 text-xs font-bold text-muted">Prodato</span>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+    </div>
+  ))}
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-table]').forEach((root) => {
+    const tabs = root.querySelectorAll<HTMLButtonElement>('[data-tab]');
+    const panels = root.querySelectorAll<HTMLElement>('[data-panel]');
+    tabs.forEach((t) => t.addEventListener('click', () => {
+      tabs.forEach((x) => x.setAttribute('aria-selected', String(x === t)));
+      panels.forEach((p) => p.classList.toggle('hidden', p.dataset.panel !== t.dataset.tab));
+    }));
+    root.querySelector<HTMLInputElement>('[data-only]')?.addEventListener('change', (e) => {
+      const only = (e.target as HTMLInputElement).checked;
+      root.querySelectorAll<HTMLElement>('tr[data-sold]').forEach((r) => r.classList.toggle('hidden', only));
+    });
+  });
+</script>

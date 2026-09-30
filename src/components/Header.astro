@@ -1,0 +1,43 @@
+---
+import { nav } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href;
+---
+<header class="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
+  <div class="container-x flex h-[72px] items-center justify-between lg:h-[88px]">
+    <a href="/" class="flex items-center" aria-label="Stanogradnja, početna">
+      <img src="/logo.png" alt="Stanogradnja d.o.o. Sarajevo" width="200" height="51" class="h-10 w-auto lg:h-[51px]" />
+    </a>
+    <nav aria-label="Glavna navigacija" class="hidden items-center gap-9 text-[15px] font-semibold lg:flex">
+      {nav.map((n) => (
+        <a
+          href={n.href}
+          aria-current={isActive(n.href) ? 'page' : undefined}
+          class:list={['border-b-2 py-2 no-underline transition-colors', isActive(n.href) ? 'border-brand text-brand-dark' : 'border-transparent text-ink hover:text-brand-dark']}
+        >{n.label}</a>
+      ))}
+      <a href="/kontakt" aria-current={isActive('/kontakt') ? 'page' : undefined} class:list={['btn h-12 text-[15px] text-white', isActive('/kontakt') ? 'bg-brand-darker' : 'bg-brand-dark hover:bg-brand-darker']}>Kontakt</a>
+    </nav>
+    <button id="menu-btn" type="button" class="flex h-11 w-11 items-center justify-center rounded-lg border border-line lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Otvori meni">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+    </button>
+  </div>
+  <nav id="mobile-menu" aria-label="Mobilna navigacija" class="hidden border-t border-line bg-white lg:hidden">
+    <div class="container-x flex flex-col py-3 text-lg font-semibold">
+      {nav.map((n) => (
+        <a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined} class:list={['border-b border-line py-4 no-underline', isActive(n.href) ? 'text-brand-dark' : 'text-ink']}>{n.label}</a>
+      ))}
+      <a href="/kontakt" class="btn-primary my-4">Kontakt</a>
+    </div>
+  </nav>
+</header>
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    btn.setAttribute('aria-label', open ? 'Otvori meni' : 'Zatvori meni');
+    menu?.classList.toggle('hidden', open);
+  });
+</script>

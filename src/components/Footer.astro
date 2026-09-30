@@ -1,0 +1,41 @@
+---
+import { site, nav } from '../data/site';
+const links = [...nav, { href: '/kontakt', label: 'Kontakt' }];
+---
+<footer class="mt-24 border-t border-line bg-soft lg:mt-32">
+  <div class="container-x flex flex-col gap-10 pt-14 pb-9">
+    <div class="flex flex-col gap-10 xl:flex-row xl:justify-between">
+      <div class="flex flex-col gap-4">
+        <img src="/logo.png" alt="Stanogradnja d.o.o. Sarajevo" width="200" height="51" class="h-[51px] w-[200px]" loading="lazy" />
+        <p class="max-w-80 text-sm leading-relaxed text-muted">{site.tagline}</p>
+      </div>
+      <div class="grid gap-10 text-[15px] leading-[1.9] sm:grid-cols-2 lg:flex lg:gap-16">
+        <div class="flex flex-col">
+          <span class="mb-1.5 font-bold">Stranice</span>
+          {links.map((l) => <a href={l.href} class="text-muted no-underline hover:text-brand-dark">{l.label}</a>)}
+        </div>
+        <div class="flex flex-col text-muted">
+          <span class="mb-1.5 font-bold text-ink">Kontakt</span>
+          <span>{site.address.full}</span>
+          {site.phones.map((p) => <a href={p.href} class="text-muted no-underline hover:text-brand-dark">{p.label}</a>)}
+          <a href={`mailto:${site.email}`} class="text-muted no-underline hover:text-brand-dark">{site.email}</a>
+        </div>
+        <div class="flex flex-col text-muted sm:col-span-2 lg:col-span-1">
+          <span class="mb-1.5 font-bold text-ink">Poslovne banke</span>
+          <div class="grid gap-x-8 gap-y-2.5 leading-normal sm:grid-cols-2">
+            {site.banks.map((b) => (
+              <div class="flex flex-col">
+                <span class="font-semibold text-ink">{b.name}</span>
+                <span class="text-sm">{b.account}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 border-t border-line pt-6 text-[13px] text-muted sm:flex-row sm:justify-between">
+      <span>© {new Date().getFullYear()} {site.name}</span>
+      <span>Sva prava zadržana</span>
+    </div>
+  </div>
+</footer>

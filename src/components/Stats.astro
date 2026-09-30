@@ -1,0 +1,14 @@
+---
+interface Props { items: { value: string; label: string }[]; class?: string }
+const { items, class: cls = '' } = Astro.props;
+---
+<div class:list={['container-x', cls]}>
+  <dl class:list={['grid grid-cols-2 rounded-[20px] bg-soft', items.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3']}>
+    {items.map((s, i) => (
+      <div class:list={['flex flex-col-reverse gap-1.5 p-6 md:p-9', i % 2 === 1 && 'border-l border-line', i >= 2 && 'border-t border-line lg:border-t-0', i === 2 && 'lg:border-l']}>
+        <dt class="text-[15px] text-muted">{s.label}</dt>
+        <dd class="text-4xl leading-none font-extrabold tracking-[-0.03em] text-brand md:text-5xl">{s.value}</dd>
+      </div>
+    ))}
+  </dl>
+</div>

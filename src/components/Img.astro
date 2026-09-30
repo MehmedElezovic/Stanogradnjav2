@@ -1,0 +1,14 @@
+---
+import { publicImage } from '../lib/stanovi';
+interface Props { src: string; alt: string; label?: string; class?: string; eager?: boolean; labelTop?: boolean }
+const { src, alt, label, class: cls = '', eager = false, labelTop = false } = Astro.props;
+const positioned = /(^|\s)(absolute|fixed)(\s|$)/.test(cls);
+const found = publicImage(src);
+---
+{found ? (
+  <img src={found} alt={alt} class:list={['object-cover', cls]} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+) : (
+  <div class:list={['ph', !positioned && 'relative', cls]} role="img" aria-label={alt}>
+    {label !== '' && <span class:list={['ph-label absolute left-4', labelTop ? 'top-4' : 'bottom-4']}>{label ?? src}</span>}
+  </div>
+)}

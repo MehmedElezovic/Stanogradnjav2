@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Img from '../components/Img.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Stats from '../components/Stats.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { team } from '../data/site';
+
+const steps = [
+  { t: 'Lokacija', d: 'Biramo zemljište u naseljima gdje ljudi žele živjeti.' },
+  { t: 'Planiranje', d: 'Projektujemo stanove prema stvarnim potrebama porodica.' },
+  { t: 'Finansiranje', d: 'Ulažemo vlastita sredstva i sarađujemo sa poslovnim bankama.' },
+  { t: 'Izgradnja', d: 'Provjereni izvođači, a mi nadziremo svaku fazu radova.' },
+  { t: 'Useljenje', d: 'Predajemo ključeve useljivog stana, spremnog za život.' },
+];
+const acts = [
+  { t: 'Građevinarstvo', d: 'Izgradnja stambenih i stambeno-poslovnih objekata.' },
+  { t: 'Inžinjering', d: 'Planiranje, projektni menadžment i nadzor.' },
+  { t: 'Trgovina', d: 'Prodaja stanova i poslovnih prostora.' },
+  { t: 'Usluge', d: 'Rekonstrukcije i izvođenje radova za treće strane.' },
+];
+---
+<Base title="O nama" description="Stanogradnja d.o.o. Sarajevo planira, finansira i vodi izgradnju stambeno-poslovnih objekata od 2008. godine.">
+  <section class="container-x pt-10 pb-12 lg:pt-14 lg:pb-16">
+    <SectionHead h="h1" eyebrow="O nama" title="Investitor koji gradi s mjerom." lead="Stanogradnja d.o.o. Sarajevo planira, finansira i vodi izgradnju stambeno-poslovnih objekata od 2008. godine." />
+  </section>
+  <div class="container-x">
+    <Img src="/slike/o-nama-hero.jpg" alt="Stanogradnja, tim na gradilištu" label="FOTO · tim na gradilištu ili završeni objekat" class="h-80 w-full rounded-3xl md:h-[600px]" eager />
+  </div>
+
+  <Stats class="mt-16 lg:mt-24" items={[
+    { value: '2008.', label: 'osnovani u Sarajevu' },
+    { value: '60+', label: 'izgrađenih stanova kao investitor' },
+    { value: '6', label: 'poslovnih prostora' },
+    { value: '80', label: 'novih stanova u izgradnji' },
+  ]} />
+
+  <section class="container-x mt-24 flex flex-col gap-8 lg:mt-32 lg:flex-row lg:gap-24">
+    <div class="flex flex-col gap-4 lg:w-[520px] lg:shrink-0">
+      <span class="eyebrow">Naša priča</span>
+      <h2 class="h2 lg:text-[52px]">Od 2008. gradimo domove u Sarajevu.</h2>
+    </div>
+    <div class="flex flex-1 flex-col gap-5 text-lg leading-[1.7] text-body">
+      <p>„Stanogradnja“ d.o.o. Sarajevo je društvo sa ograničenom odgovornošću za građevinarstvo, inžinjering, trgovinu i usluge, osnovano 2008. godine.</p>
+      <p>Za protekle gotovo dvije decenije realizirali smo nekoliko projekata, od kojih se posebno izdvajaju projekti u Vogošći i na Stupu sa ukupno preko 60 stanova i 6 poslovnih prostora u svojstvu investitora.</p>
+      <p>Trenutno gradimo dvije lamele stambeno-poslovnog objekta Novi Bulevar u ulici Stupska, sa 80 stanova i 4 poslovna prostora.</p>
+    </div>
+  </section>
+
+  <section class="container-x mt-24 flex flex-col gap-10 lg:mt-32">
+    <SectionHead eyebrow="Kako radimo" title="Mi smo investitor. Od prve skice do predaje ključeva." lead="Ne držimo mašine i radnike. Držimo projekat: lokaciju, planiranje, finansiranje i kontrolu kvaliteta. Izvođenje povjeravamo provjerenim podizvođačima." />
+    <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {steps.map((s, i) => (
+        <li class="flex flex-col gap-3.5 rounded-2xl bg-soft p-7">
+          <span class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-white font-extrabold text-brand-dark">{i + 1}</span>
+          <span class="text-xl font-extrabold">{s.t}</span>
+          <span class="text-[15px] leading-[1.55] text-muted">{s.d}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="container-x mt-24 flex flex-col gap-10 lg:mt-32">
+    <SectionHead eyebrow="Djelatnost" title="Čime se bavimo." />
+    <ul class="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-4">
+      {acts.map((a) => (
+        <li class="flex flex-col gap-2.5 border-t-2 border-brand py-7"><span class="text-[22px] font-extrabold">{a.t}</span><span class="text-[15px] leading-[1.55] text-muted">{a.d}</span></li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="tim" class="container-x mt-24 flex flex-col gap-12 lg:mt-32">
+    <SectionHead eyebrow="Naš tim" title="Ljudi iza svakog projekta." lead="Mali tim sa dugim iskustvom. Uvijek znate s kim razgovarate, od prvog upita do useljenja." />
+    <ul class="grid grid-cols-2 gap-5 lg:grid-cols-4">
+      {team.map((m) => (
+        <li class="flex flex-col gap-4">
+          <Img src={m.photo} alt={`${m.name}, ${m.role}`} label="" class="h-56 w-full rounded-2xl md:h-[340px]" />
+          <div class="flex flex-col gap-1"><span class="text-[19px] font-bold">{m.name}</span><span class="text-[15px] text-muted">{m.role}</span></div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <CtaBand />
+</Base>

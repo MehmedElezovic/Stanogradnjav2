@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+---
+<section class="container-x mt-24 lg:mt-32">
+  <div class="flex flex-col gap-8 rounded-[28px] bg-brand-dark p-8 text-white md:p-12 lg:flex-row lg:items-center lg:justify-between lg:px-16 lg:py-14">
+    <div class="flex flex-col gap-3">
+      <h2 class="text-3xl leading-tight font-extrabold tracking-[-0.03em] md:text-[44px]">Zanima vas stan na Stupu?</h2>
+      <p class="text-[17px] text-[#e3f2fa]">Pozovite nas ili zakažite obilazak. Rado ćemo vam pokazati projekat.</p>
+    </div>
+    <div class="flex flex-col gap-3 sm:flex-row lg:shrink-0">
+      <a href={site.phones[0].href} class="btn bg-white text-brand-darker hover:bg-tint">{site.phones[0].label}</a>
+      <a href="/kontakt" class="btn border-[1.5px] border-[#cfe9f7] text-white hover:bg-brand-darker">Kontakt forma</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #018fd5;       /* boja iz logotipa, za dekor i velike elemente */
+  --color-brand-dark: #0070a8;  /* dugmad i manji plavi tekst (kontrast) */
+  --color-brand-darker: #005580;
+  --color-ink: #0e1b26;
+  --color-body: #3c4852;
+  --color-muted: #5a6772;
+  --color-line: #e2e8ed;
+  --color-line-strong: #cbd6de;
+  --color-soft: #f3f7fa;
+  --color-tint: #e6f4fb;
+  --color-success: #1e6b3a;
+  --color-success-bg: #e3f4ea;
+  --font-sans: "Plus Jakarta Sans Variable", system-ui, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white text-ink font-sans antialiased; }
+  :focus-visible { outline: 2px solid var(--color-brand-dark); outline-offset: 2px; }
+  [id] { scroll-margin-top: 96px; }
+}
+
+@utility container-x { @apply mx-auto w-full max-w-[1440px] px-5 md:px-10 lg:px-16; }
+@utility eyebrow { @apply text-sm font-bold tracking-[0.06em] text-brand-dark uppercase; }
+@utility h1 { @apply text-[44px] leading-[1.04] font-extrabold tracking-[-0.035em] md:text-6xl lg:text-[72px] lg:leading-[1.02]; }
+@utility h2 { @apply text-[36px] leading-[1.06] font-extrabold tracking-[-0.03em] md:text-5xl lg:text-[56px] lg:leading-[1.04]; }
+@utility lead { @apply text-[17px] leading-[1.65] text-muted md:text-lg; }
+@utility btn { @apply inline-flex h-[52px] items-center justify-center gap-2 rounded-lg px-6 text-base font-bold no-underline transition-colors; }
+@utility btn-primary { @apply btn bg-brand-dark text-white hover:bg-brand-darker; }
+@utility btn-outline { @apply btn border-[1.5px] border-line-strong text-ink hover:border-ink; }
+@utility ph {
+    background-color: #eaf0f4;
+    background-image: repeating-linear-gradient(135deg, rgba(14, 27, 38, .05) 0 1px, transparent 1px 16px);
+  }
+@utility ph-label { @apply rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-muted; }
+@utility field { @apply h-12 w-full rounded-lg border-[1.5px] border-line-strong bg-white px-3.5 text-[15px] text-ink focus:border-brand-dark focus:outline-none; }

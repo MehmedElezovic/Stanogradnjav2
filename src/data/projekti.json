@@ -1,0 +1,12 @@
+[
+  { "slug": "vogosca", "uloga": "investitor", "kategorija": "Stambeni objekat", "naziv": "Stambeni objekat Vogošća", "opis": "Vogošća, Sarajevo · [godina] · [broj] stanova", "istaknut": true },
+  { "slug": "stup", "uloga": "investitor", "kategorija": "Stambeno-poslovni objekat", "naziv": "Stambeno-poslovni objekat Stup", "opis": "Stup, Ilidža · [godina] · [broj] stanova", "istaknut": true },
+  { "slug": "koridor-vc", "uloga": "izvodjac", "kategorija": "Infrastruktura", "naziv": "Dijelovi koridora Vc", "opis": "Autoput A1", "istaknut": true },
+  { "slug": "os-visoko", "uloga": "izvodjac", "kategorija": "Obrazovanje", "naziv": "Rekonstrukcija dijela osnovne škole", "opis": "Visoko", "istaknut": true },
+  { "slug": "os-edhem-mulabdic", "uloga": "izvodjac", "kategorija": "Obrazovanje", "naziv": "OŠ „Edhem Mulabdić“", "opis": "[lokacija]" },
+  { "slug": "os-alija-nametak", "uloga": "izvodjac", "kategorija": "Obrazovanje", "naziv": "OŠ „Alija Nametak“", "opis": "[lokacija]" },
+  { "slug": "druga-osnovna-skola", "uloga": "izvodjac", "kategorija": "Obrazovanje", "naziv": "Druga osnovna škola", "opis": "[lokacija]" },
+  { "slug": "uni-expert", "uloga": "izvodjac", "kategorija": "Rekonstrukcija", "naziv": "Rekonstrukcija UNI-EXPERT-a", "opis": "Dobrinja, Sarajevo", "istaknut": true },
+  { "slug": "majke-enklave", "uloga": "izvodjac", "kategorija": "Stambeni objekti", "naziv": "Kuće za udruženje „Majke enklave Srebrenica i Žepa“", "opis": "[lokacija]", "istaknut": true },
+  { "slug": "skenderija", "uloga": "izvodjac", "kategorija": "Rekonstrukcija", "naziv": "Rekonstrukcija poslovnog prostora", "opis": "Skenderija, Sarajevo" }
+]

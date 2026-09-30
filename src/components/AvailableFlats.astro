@@ -1,0 +1,80 @@
+---
+import { dostupni, prodato, prodatoPct, id, m2, tlocrt } from '../lib/stanovi';
+const first = dostupni[0];
+const items = dostupni.map((s) => ({ ...s, id: id(s), area: m2(s.povrsina), plan: tlocrt(s) ?? '' }));
+---
+<section id="stanovi" class="container-x mt-24 lg:mt-32">
+  <div class="flex flex-col gap-10 rounded-3xl bg-soft p-5 md:p-10 lg:p-14" data-flats>
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <div class="flex flex-col gap-3.5">
+        <span class="eyebrow">Dostupni stanovi</span>
+        <h3 class="text-[34px] leading-[1.06] font-extrabold tracking-[-0.03em] md:text-5xl lg:text-[52px]">Prodato {prodatoPct}%. Ostalo još {dostupni.length} stanova.</h3>
+      </div>
+      <div class="flex w-full flex-col gap-2.5 lg:w-[360px]">
+        <div class="flex h-2.5 overflow-hidden rounded-full bg-[#d5e0e8]" role="progressbar" aria-valuenow={prodatoPct} aria-valuemin="0" aria-valuemax="100" aria-label="Prodatih stanova">
+          <div class="rounded-full bg-brand" style={`width:${prodatoPct}%`}></div>
+        </div>
+        <div class="flex justify-between text-[13px] font-semibold text-muted"><span>{prodato} prodato</span><span>{dostupni.length} slobodno</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3 lg:grid-cols-4" role="listbox" aria-label="Dostupni stanovi">
+      {items.map((s, i) => (
+        <button
+          type="button"
+          role="option"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          data-flat={JSON.stringify({ id: s.id, lamela: s.lamela, stan: s.stan, sprat: s.sprat, tip: s.tip, area: s.area, plan: s.plan })}
+          class="flex flex-col gap-3.5 rounded-[14px] border-[1.5px] border-line bg-white p-4 text-left transition hover:border-brand hover:shadow-[0_8px_24px_rgba(1,143,213,.12)] aria-selected:border-brand aria-selected:bg-tint md:p-5"
+        >
+          <span class="flex w-full flex-wrap justify-between gap-1 text-xs font-bold tracking-[0.04em] text-muted"><span><span class="hidden sm:inline">LAMELA </span>{s.lamela} · STAN {s.stan}</span><span>{s.sprat}. SPRAT</span></span>
+          <span class="text-[28px] leading-none font-extrabold tracking-[-0.03em] md:text-[34px]">{s.area}<span class="text-base font-semibold text-muted"> m²</span></span>
+          <span class="text-[15px] font-semibold">{s.tip}</span>
+        </button>
+      ))}
+    </div>
+
+    <div class="flex flex-col gap-5 rounded-2xl bg-white p-4 md:p-6" aria-live="polite">
+      <div class="relative aspect-[16/9] overflow-hidden rounded-xl md:aspect-[2/1]">
+        <img data-plan-img src={items[0].plan || undefined} alt={`Tlocrt, Lamela ${first.lamela}, stan ${first.stan}`} class:list={['h-full w-full bg-white object-contain', !items[0].plan && 'hidden']} />
+        <div data-plan-ph class:list={['ph absolute inset-0 flex flex-col items-center justify-center gap-3', items[0].plan && 'hidden']}>
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke="#5A6772" stroke-width="2" aria-hidden="true"><rect x="6" y="6" width="44" height="44" rx="2" /><path d="M6 26h18M24 6v12M24 26v24M34 26h16M34 26v8" /></svg>
+          <span class="ph-label text-[13px] font-bold" data-plan-label>TLOCRT · LAMELA {first.lamela}, STAN {first.stan}</span>
+        </div>
+      </div>
+      <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap items-center gap-x-8 gap-y-3">
+          <div class="flex flex-col gap-0.5"><span class="text-xs font-bold tracking-[0.06em] text-brand-dark" data-f="title">LAMELA {first.lamela} · STAN {first.stan}</span><span class="text-[32px] leading-tight font-extrabold tracking-[-0.03em]" data-f="area">{items[0].area} m²</span></div>
+          <div class="flex flex-col gap-0.5"><span class="text-xs text-muted">Tip</span><span class="text-sm font-bold" data-f="tip">{first.tip}</span></div>
+          <div class="flex flex-col gap-0.5"><span class="text-xs text-muted">Sprat</span><span class="text-sm font-bold" data-f="sprat">{first.sprat}.</span></div>
+        </div>
+        <a href={`/kontakt?stan=${items[0].id}#forma`} data-f="cta" class="btn-primary">Pošaljite upit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-flats]').forEach((root) => {
+    const cards = root.querySelectorAll<HTMLButtonElement>('[data-flat]');
+    const img = root.querySelector<HTMLImageElement>('[data-plan-img]')!;
+    const ph = root.querySelector<HTMLElement>('[data-plan-ph]')!;
+    const label = root.querySelector<HTMLElement>('[data-plan-label]')!;
+    const f = (k: string) => root.querySelector<HTMLElement>(`[data-f="${k}"]`)!;
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const d = JSON.parse(card.dataset.flat!);
+        cards.forEach((c) => c.setAttribute('aria-selected', String(c === card)));
+        f('title').textContent = `LAMELA ${d.lamela} · STAN ${d.stan}`;
+        f('area').textContent = `${d.area} m²`;
+        f('tip').textContent = d.tip;
+        f('sprat').textContent = `${d.sprat}.`;
+        (f('cta') as HTMLAnchorElement).href = `/kontakt?stan=${d.id}#forma`;
+        label.textContent = `TLOCRT · LAMELA ${d.lamela}, STAN ${d.stan}`;
+        img.alt = `Tlocrt, Lamela ${d.lamela}, stan ${d.stan}`;
+        if (d.plan) { img.src = d.plan; img.classList.remove('hidden'); ph.classList.add('hidden'); }
+        else { img.classList.add('hidden'); ph.classList.remove('hidden'); }
+      });
+    });
+  });
+</script>

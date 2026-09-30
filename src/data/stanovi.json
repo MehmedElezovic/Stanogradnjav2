@@ -1,0 +1,642 @@
+[
+ {
+  "lamela": "A",
+  "stan": 1,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 53.81,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 2,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 27.63,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 3,
+  "sprat": 1,
+  "tip": "Trosoban",
+  "povrsina": 55.82,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 4,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 46.74,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "A",
+  "stan": 5,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 51.58,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 6,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 46.64,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 7,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "A",
+  "stan": 8,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 41.26,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 9,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 38.59,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 10,
+  "sprat": 2,
+  "tip": "Trosoban",
+  "povrsina": 56.32,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 11,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 46.96,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 12,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 52.39,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 13,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 47.36,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 14,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 15,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 41.94,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 16,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 38.53,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 17,
+  "sprat": 3,
+  "tip": "Trosoban",
+  "povrsina": 56.87,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 18,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 47.23,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 19,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 52.78,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 20,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 47.68,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "A",
+  "stan": 21,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 22,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 41.94,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 23,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 38.53,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 24,
+  "sprat": 4,
+  "tip": "Trosoban",
+  "povrsina": 56.87,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 25,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 47.23,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 26,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 52.78,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 27,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 47.68,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 28,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 29,
+  "sprat": 5,
+  "tip": "Peterosoban",
+  "povrsina": 120.36,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 30,
+  "sprat": 5,
+  "tip": "Peterosoban",
+  "povrsina": 115.19,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "A",
+  "stan": 31,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 47.23,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 32,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 52.78,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 33,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 47.56,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 34,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 43.49,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 35,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 47.07,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 36,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 52.68,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 37,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 47.54,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "A",
+  "stan": 38,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 43.39,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 39,
+  "sprat": 8,
+  "tip": "Peterosoban",
+  "povrsina": 84.68,
+  "status": "prodato"
+ },
+ {
+  "lamela": "A",
+  "stan": 40,
+  "sprat": 8,
+  "tip": "Peterosoban",
+  "povrsina": 89.59,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "B",
+  "stan": 1,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 2,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 34.14,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 3,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 38.04,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 4,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 46.74,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 5,
+  "sprat": 1,
+  "tip": "Trosoban",
+  "povrsina": 55.82,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 6,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 27.63,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 7,
+  "sprat": 1,
+  "tip": "Dvosoban",
+  "povrsina": 53.81,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 8,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 9,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 34.84,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 10,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 38.84,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 11,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 46.96,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 12,
+  "sprat": 2,
+  "tip": "Trosoban",
+  "povrsina": 56.32,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 13,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 38.59,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 14,
+  "sprat": 2,
+  "tip": "Dvosoban",
+  "povrsina": 41.32,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 15,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 16,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 35.21,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 17,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 39.24,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 18,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 47.23,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 19,
+  "sprat": 3,
+  "tip": "Trosoban",
+  "povrsina": 56.87,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 20,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 38.53,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 21,
+  "sprat": 3,
+  "tip": "Dvosoban",
+  "povrsina": 41.94,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 22,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 44.0,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 23,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 35.21,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 24,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 39.24,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 25,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 47.23,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 26,
+  "sprat": 4,
+  "tip": "Trosoban",
+  "povrsina": 56.87,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 27,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 38.53,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 28,
+  "sprat": 4,
+  "tip": "Dvosoban",
+  "povrsina": 41.94,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 29,
+  "sprat": 5,
+  "tip": "Četverosoban",
+  "povrsina": 103.32,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 30,
+  "sprat": 5,
+  "tip": "Četverosoban",
+  "povrsina": 93.23,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "B",
+  "stan": 31,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 43.49,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 32,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 35.34,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 33,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 31.51,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 34,
+  "sprat": 6,
+  "tip": "Dvosoban",
+  "povrsina": 37.82,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 35,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 43.39,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 36,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 35.24,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 37,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 31.37,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 38,
+  "sprat": 7,
+  "tip": "Dvosoban",
+  "povrsina": 37.65,
+  "status": "prodato"
+ },
+ {
+  "lamela": "B",
+  "stan": 39,
+  "sprat": 8,
+  "tip": "Četverosoban",
+  "povrsina": 77.5,
+  "status": "dostupan"
+ },
+ {
+  "lamela": "B",
+  "stan": 40,
+  "sprat": 8,
+  "tip": "Trosoban",
+  "povrsina": 54.02,
+  "status": "prodato"
+ }
+]

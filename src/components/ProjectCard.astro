@@ -1,0 +1,17 @@
+---
+import Img from './Img.astro';
+interface Props { p: { slug: string; uloga: string; kategorija: string; naziv: string; opis: string }; size?: 'lg' | 'md' }
+const { p, size = 'md' } = Astro.props;
+const inv = p.uloga === 'investitor';
+---
+<article class="flex flex-col gap-4" data-uloga={p.uloga}>
+  <div class:list={['relative overflow-hidden', size === 'lg' ? 'rounded-[20px]' : 'rounded-[18px]']}>
+    <Img src={`/slike/projekti/${p.slug}.jpg`} alt={p.naziv} label="" class:list={['w-full', size === 'lg' ? 'h-72 md:h-[420px]' : 'h-64 md:h-[300px]']} />
+    <span class:list={['absolute top-4 left-4 rounded-full px-3 py-1.5 text-xs font-bold', inv ? 'bg-brand-dark text-white' : 'bg-white text-ink']}>{inv ? 'Investitor' : 'Izvođač'}</span>
+  </div>
+  <div class="flex flex-col gap-1.5">
+    <span class="text-xs font-bold tracking-[0.06em] text-brand-dark uppercase">{p.kategorija}</span>
+    <h3 class:list={['leading-tight font-extrabold tracking-[-0.015em]', size === 'lg' ? 'text-2xl md:text-[28px]' : 'text-[22px]']}>{p.naziv}</h3>
+    <span class="text-[15px] text-muted">{p.opis}</span>
+  </div>
+</article>

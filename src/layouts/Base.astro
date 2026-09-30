@@ -1,0 +1,35 @@
+---
+import '@fontsource-variable/plus-jakarta-sans';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props { title: string; description?: string }
+const { title, description = 'Stanogradnja d.o.o. Sarajevo, investitor stambeno-poslovnih objekata od 2008. Novi projekat Bella Vita na Stupu.' } = Astro.props;
+const fullTitle = title === 'Početna' ? 'Stanogradnja d.o.o. Sarajevo · Novi stanovi na Stupu' : `${title} · Stanogradnja`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="bs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="bs_BA" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2">Preskoči na sadržaj</a>
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
