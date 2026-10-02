@@ -10,6 +10,14 @@ npm run dev      # http://localhost:4321
 npm run build    # output in dist/
 ```
 
+## Deploy on Cloudflare (Workers)
+
+The repo includes `wrangler.jsonc`, which serves `dist/` as a static site.
+In Cloudflare → Workers & Pages → your project → Settings → Build:
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+
 ## Deploy (Vercel or Netlify)
 
 1. Push this folder to a GitHub repo.
